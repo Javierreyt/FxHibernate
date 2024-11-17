@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.WebView?>
+
+<StackPane maxWidth="-Infinity" minWidth="-Infinity" styleClass="background" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hibernateproject.pruebajavafxconhibernatehello.controller.MovieDetailsController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" styleClass="background" stylesheets="@../style.css">
+         <center>
+              <HBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="779.0" prefWidth="998.0" styleClass="bgtransparent">
+                  <children>
+                      <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="664.0" prefWidth="400.0">
+                          <children>
+                              <ImageView fx:id="imgJPG" fitHeight="225.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true">
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
+                        </ImageView>
+                        <FlowPane alignment="CENTER" hgap="10.0">
+                           <children>
+                              <Button fx:id="backMovieButton" mnemonicParsing="false" onAction="#backMovie">
+                                 <graphic>
+                                    <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../media/flechaIzq.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="nextMovieButton" mnemonicParsing="false" onAction="#nextMovie">
+                                 <graphic>
+                                    <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../media/flechaDer.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="40.0" />
+                           </VBox.margin>
+                        </FlowPane>
+                        <WebView fx:id="webURL" minHeight="169.0" minWidth="300.0" prefHeight="195.0" prefWidth="372.0">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </WebView>
+                          </children>
+                          <HBox.margin>
+                              <Insets bottom="50.0" left="50.0" right="100.0" top="50.0" />
+                          </HBox.margin>
+                      </VBox>
+                      <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="664.0" prefWidth="450.0" spacing="15.0">
+                          <children>
+                              <Label text="Titulo" />
+                        <Label fx:id="titleArea" styleClass="labelinfo" text="Label" />
+                              <Label text="Genero" />
+                        <Label fx:id="genreArea" styleClass="labelinfo" text="Label" />
+                              <Label text="Año" />
+                        <Label fx:id="yearArea" styleClass="labelinfo" text="Label" />
+                        <Label text="Director" />
+                        <Label fx:id="directorArea" styleClass="labelinfo" text="Label" />
+                              <Label text="Descripcion" />
+                        <Label fx:id="descriptionArea" alignment="TOP_LEFT" prefHeight="170.0" prefWidth="400.0" styleClass="labelinfo" text="Label" wrapText="true" />
+                              <FlowPane alignment="CENTER_RIGHT" columnHalignment="CENTER" hgap="20.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="47.0" prefWidth="431.0">
+                                  <children>
+                              <Button mnemonicParsing="false" onAction="#delete" styleClass="noimage" text="Eliminar" />
+                                      <Button fx:id="buttonBack" cancelButton="true" defaultButton="true" mnemonicParsing="false" onAction="#close" styleClass="noimage" text="Volver" />
+                                  </children>
+                                  <VBox.margin>
+                                      <Insets right="200.0" />
+                                  </VBox.margin>
+                              </FlowPane>
+                          </children>
+                     <HBox.margin>
+                        <Insets top="100.0" />
+                     </HBox.margin>
+                      </VBox>
+                  </children>
+               <BorderPane.margin>
+                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+               </BorderPane.margin>
+              </HBox>
+         </center>
+         <top>
+            <MenuBar BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="Menu">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#logout" text="Logout" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchFilms" text="Lista Peliculas" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCopy" text="Copias" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+      </BorderPane>
+      <BorderPane fx:id="alertInfo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="278.0" prefWidth="798.0" styleClass="help-pane" visible="false">
+         <top>
+            <FlowPane alignment="CENTER" prefHeight="35.0" prefWidth="794.0" styleClass="flow-pane-alert" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="labelTitleAlert" text="Label" />
+               </children>
+            </FlowPane>
+         </top>
+         <center>
+            <VBox alignment="CENTER_LEFT" spacing="20.0">
+               <children>
+                  <Label fx:id="labelInfoAlert" prefHeight="154.0" prefWidth="464.0" text="Label" wrapText="true" />
+                  <FlowPane alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="464.0">
+                     <children>
+                        <Button fx:id="btnAcceptInfo" mnemonicParsing="false" text="Aceptar" />
+                     </children>
+                  </FlowPane>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="40.0" right="40.0" top="10.0" />
+               </BorderPane.margin>
+            </VBox>
+         </center>
+         <left>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="100.0" />
+               </BorderPane.margin>
+               <image>
+                  <Image url="@../media/alert.png" />
+               </image>
+            </ImageView>
+         </left>
+      </BorderPane>
+   </children>
+</StackPane>

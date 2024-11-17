@@ -1,0 +1,188 @@
+/* Estilos generales */
+.root {
+    -fx-font-family: "Marker Felt", fantasy;
+    -fx-font-size: 20px;
+    -fx-background-color: linear-gradient(to right, #2b232c,#2b232c,red);
+}
+
+.root.background{
+    -fx-background-image: url("media/fondoPantallaR.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.bgtransparent{
+    -fx-background-color: rgba(255, 255, 255, 0.7);
+    -fx-background-radius: 15; /* Redondea los bordes */
+    -fx-border-radius: 15; /* Asegura que el borde siga el mismo radio */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.2, 0, 4); /* Aplica una sombra */
+}
+
+/* Estilo para las etiquetas */
+.label {
+    -fx-text-fill: #000000; /* Color del texto */
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+.label.labelinfo {
+    -fx-text-fill: #333333; /* Color del texto */
+    -fx-font-weight: normal; /* Quitar negrita */
+    -fx-font-size: 16px;     /* Establecer tamaño de fuente a 12 px */
+}
+.label.labeltitle {
+    -fx-font-size: 30px;
+}
+.button{
+    -fx-background-color:#f86464;
+}
+/* Estilo para los botones */
+.button.noimage {
+    -fx-background-color: #000000; /* Color de fondo del botón */
+    -fx-text-fill: white; /* Color del texto del botón */
+    -fx-padding: 10px 20px; /* Espaciado interno */
+    -fx-font-size: 14px;
+    -fx-cursor: hand; /* Cambiar el cursor al pasar por encima */
+    -fx-border-radius: 5px; /* Bordes redondeados */
+}
+
+.button:hover {
+    -fx-background-color: #fa1919; /* Color de fondo al pasar el cursor */
+}
+.password-field{
+    -fx-font-size:10px;
+}
+/* Estilo para los campos de texto */
+.text-field, .combo-box, .spinner, .text-area{
+    -fx-border-color: #cccccc; /* Color del borde */
+    -fx-border-radius: 5px; /* Bordes redondeados */
+    -fx-padding: 10px; /* Espaciado interno */
+    -fx-background-color: white; /* Color de fondo */
+}
+
+/* Estilo para el área de texto */
+.text-area {
+    -fx-border-color: #cccccc; /* Color del borde */
+    -fx-border-radius: 5px; /* Bordes redondeados */
+    -fx-padding: 10px; /* Espaciado interno */
+}
+
+/* Estilo para FlowPane y VBox */
+.flow-pane {
+    -fx-spacing: 10; /* Espaciado entre hijos */
+}
+
+.vbox {
+    -fx-spacing: 20; /* Espaciado entre hijos */
+}
+
+/* Estilo para TableView */
+.table-view {
+    -fx-text-fill: #ffffff; /* Color del texto de la tabla */
+    -fx-background-color: grey; /* Color de fondo de la tabla */
+    -fx-border-color: #cccccc; /* Color del borde de la tabla */
+    -fx-border-radius: 5px; /* Bordes redondeados */
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: grey; /* Fondo gris claro para las filas */
+}
+
+.table-view .table-row-cell:cell-selection {
+    -fx-background-color: #a9a9a9; /* Fondo gris oscuro para filas pares */
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #5a5a5a; /* Fondo gris oscuro para la fila seleccionada */
+}
+
+.table-cell {
+    -fx-text-fill: white; /* Color del texto en las celdas */
+    -fx-padding: 10px; /* Espaciado interno */
+}
+
+.column-header {
+    -fx-font-size: 24px;
+    -fx-padding: 10px;
+    -fx-background-color: #f86464;
+}
+
+.column-header .label {
+    -fx-text-fill: white;
+}
+/* Estilo para la barra de menú */
+.menu-bar {
+    -fx-background-color: #f86464; /* Color de fondo de la barra de menú */
+    -fx-text-fill: white; /* Color del texto de la barra de menú */
+}
+
+.menu{
+    -fx-background-color: #f86464; /* Color de fondo de la barra de menú */
+}
+.menu-item {
+    -fx-background-color: #f86464; /* Color de fondo de la barra de menú */
+    -fx-text-fill: white; /* Color del texto de los elementos del menú */
+}
+.menu:hover{
+    -fx-background-color: #f71717; /* Color al pasar el cursor por encima del menú */
+}
+.menu-item:hover {
+    -fx-background-color: #f71717; /* Color al pasar el cursor por encima del menú */
+}
+.table-cell{
+    -fx-padding: 20px 10px;
+    -fx-font-size: 16px;
+}
+.column-header{
+    -fx-font-size: 24px;
+    -fx-padding: 10px;
+    -fx-background-color: #f86464;
+}
+.column-header .label{
+    -fx-text-fill: white;
+}
+
+.scroll-bar:vertical {
+    -fx-background-color: #f86464; /* Color de fondo de la barra */
+    -fx-pref-width: 10px; /* Ancho de la barra */
+}
+
+.scroll-bar:horizontal {
+    -fx-background-color: #f86464; /* Color de fondo de la barra */
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #000000; /* Color de la parte deslizante */
+    -fx-background-radius: 5; /* Bordes redondeados */
+}
+
+.scroll-bar .thumb:pressed {
+    -fx-background-color: #5a0606; /* Color de la parte deslizante al presionar */
+}
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: #f5b4b4; /* Color de fondo al pasar el mouse */
+}
+
+.help-pane {
+    -fx-background-color: grey;
+    -fx-background-radius: 15;      /* Radio del borde de fondo */
+    -fx-border-color: #cccccc;      /* Color del borde */
+    -fx-border-width: 2;            /* Grosor del borde */
+    -fx-border-radius: 15;  
+}
+.help-text-area {
+    -fx-background-color: black;          /* Fondo negro */
+    -fx-text-fill: black;                 /* Texto blanco */
+    -fx-background-radius: 10;            /* Bordes redondeados */
+    -fx-border-color: white;              /* Color del borde */
+    -fx-border-radius: 10;                /* Radio de los bordes */
+    -fx-border-width: 2;                  /* Grosor del borde */
+    -fx-padding: 10;                      /* Espaciado interno */
+}
+.flow-pane-alert{
+    -fx-background-color: black;
+    -fx-background-radius: 15;
+}
+.flow-pane-alert .label{
+    -fx-text-fill: white;
+}
