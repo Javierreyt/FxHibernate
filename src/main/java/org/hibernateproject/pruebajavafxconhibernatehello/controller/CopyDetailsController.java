@@ -26,6 +26,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * Controlador para la vista de detalles de una copia de película.
+ * Permite visualizar, actualizar y eliminar copias de películas.
+ * También permite navegar entre las copias de películas del usuario.
+ */
 public class CopyDetailsController implements Initializable {
     @FXML
     private Button buttonSave;
@@ -79,11 +84,19 @@ public class CopyDetailsController implements Initializable {
     @FXML
     private BorderPane alertInfo;
 
+    /**
+     * Cierra la vista actual y vuelve a la lista de copias.
+     * @param actionEvent Evento de acción.
+     */
     @FXML
     public void close(ActionEvent actionEvent) {
         GestorPeliculas.loadFXML("views/copy-view.fxml", "TottiFilms - Lista de Copias");
     }
 
+    /**
+     * Guarda o actualiza la copia de la película.
+     * @param actionEvent Evento de acción.
+     */
     @FXML
     public void saveOrUpdate(ActionEvent actionEvent) {
         // Verificar si los campos están vacíos
@@ -116,7 +129,10 @@ public class CopyDetailsController implements Initializable {
         }
     }
 
-
+    /**
+     * Navega a la siguiente película en la lista de copias del usuario.
+     * @param actionEvent Evento de acción.
+     */
     @FXML
     public void nextMovie(ActionEvent actionEvent) {
         List<MovieCopiaDTO> movieCopiaList = new MovieCopiaDTO(HibernateUtil.getSessionFactory())
@@ -146,6 +162,10 @@ public class CopyDetailsController implements Initializable {
         }
     }
 
+    /**
+     * Navega a la película anterior en la lista de copias del usuario.
+     * @param actionEvent Evento de acción.
+     */
     @FXML
     public void backMovie(ActionEvent actionEvent) {
         List<MovieCopiaDTO> movieCopiaList = new MovieCopiaDTO(HibernateUtil.getSessionFactory())
@@ -175,6 +195,11 @@ public class CopyDetailsController implements Initializable {
         }
     }
 
+    /**
+     * Inicializa la vista con los datos de la copia y la película.
+     * @param url URL de la vista.
+     * @param resourceBundle Recursos de la vista.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         statusCombo.getItems().addAll(copiaDAO.findEstado());
@@ -212,6 +237,10 @@ public class CopyDetailsController implements Initializable {
         }
     }
 
+    /**
+     * Habilita o deshabilita los campos de edición.
+     * @param actionEvent Evento de acción.
+     */
     @FXML
     public void edit(ActionEvent actionEvent) {
         if(statusCombo.isDisable()){
@@ -223,6 +252,10 @@ public class CopyDetailsController implements Initializable {
         }
     }
 
+    /**
+     * Elimina la copia de la película.
+     * @param actionEvent Evento de acción.
+     */
     @FXML
     public void delete(ActionEvent actionEvent) {
         copiaDAO.delete(copia);
@@ -232,17 +265,30 @@ public class CopyDetailsController implements Initializable {
         btnAcceptInfo.setOnAction(event -> GestorPeliculas.loadFXML("views/copy-view.fxml", "TottiFilms - Lista de Copias"));
     }
 
+    /**
+     * Cierra la sesión del usuario y vuelve a la vista de inicio de sesión.
+     * @param actionEvent Evento de acción.
+     */
     @FXML
     public void logout(ActionEvent actionEvent) {
         PropertiesManager.saveObject("currentmovie",null);
         PropertiesManager.saveObject("currentcopia",null);
         GestorPeliculas.loadFXML("views/login-view.fxml","TottiFilms - Login");
     }
+
+    /**
+     * Cambia a la vista de lista de copias.
+     * @param actionEvent Evento de acción.
+     */
     @FXML
     public void switchCopy(ActionEvent actionEvent) {
         GestorPeliculas.loadFXML("views/copy-view.fxml","TottiFilms - Lista de Copias");
     }
 
+    /**
+     * Muestra la lista de películas.
+     * @param actionEvent Evento de acción.
+     */
     @FXML
     public void listaPeliculasAction(ActionEvent actionEvent) {
         PropertiesManager.saveObject("currentmovie",null);

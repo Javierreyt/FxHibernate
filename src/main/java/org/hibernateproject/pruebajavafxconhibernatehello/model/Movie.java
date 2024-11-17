@@ -6,6 +6,9 @@ import lombok.*;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Representa una película en la base de datos.
+ */
 @Data
 @NoArgsConstructor
 @Entity
@@ -40,6 +43,17 @@ public class Movie implements Serializable {
     @OneToMany(mappedBy = "movie", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<Copia> copias;
 
+    /**
+     * Constructor para crear una nueva película.
+     *
+     * @param titulo      el título de la película
+     * @param genero      el género de la película
+     * @param año         el año de lanzamiento de la película
+     * @param descripcion una breve descripción de la película
+     * @param director    el director de la película
+     * @param imagen      la URL de la imagen de portada de la película
+     * @param url         la URL de la película
+     */
     public Movie(String titulo, String genero, Integer año, String descripcion, String director, String imagen, String url) {
         this.titulo = titulo;
         this.genero = genero;

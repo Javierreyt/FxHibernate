@@ -4,6 +4,9 @@ import java.io.*;
 import java.util.Base64;
 import java.util.Properties;
 
+/**
+ * Clase de utilidad para gestionar las propiedades de la aplicación.
+ */
 public class PropertiesManager {
     private static final String PROPERTIES_FILE = "src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/utils/session.properties";
     private static Properties properties;
@@ -21,16 +24,20 @@ public class PropertiesManager {
         }
     }
 
-    // Método genérico para guardar cualquier objeto serializable
+    /**
+     * Guarda un objeto serializable en las propiedades.
+     *
+     * @param key    la clave bajo la cual se guarda el objeto
+     * @param object el objeto a guardar
+     * @param <T>    el tipo del objeto
+     */
     public static <T extends Serializable> void saveObject(String key, T object) {
         try {
-            // Serializar el objeto
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
             objectOutputStream.writeObject(object);
             objectOutputStream.flush();
 
-            // Codificar en base64 y guardar en las propiedades
             String objectBase64 = Base64.getEncoder().encodeToString(byteArrayOutputStream.toByteArray());
             properties.setProperty(key, objectBase64);
             saveProperties();
@@ -39,16 +46,21 @@ public class PropertiesManager {
         }
     }
 
-    // Método genérico para cargar cualquier objeto serializable
+    /**
+     * Carga un objeto serializable de las propiedades.
+     *
+     * @param key   la clave bajo la cual se guarda el objeto
+     * @param clazz la clase del objeto
+     * @param <T>   el tipo del objeto
+     * @return el objeto cargado o null si no se encuentra
+     */
     @SuppressWarnings("unchecked")
     public static <T> T loadObject(String key, Class<T> clazz) {
         try {
             String objectBase64 = properties.getProperty(key);
             if (objectBase64 != null) {
-                // Decodificar de base64 a array de bytes
                 byte[] objectBytes = Base64.getDecoder().decode(objectBase64);
 
-                // Deserializar el array de bytes en un objeto
                 ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(objectBytes);
                 ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
                 return (T) objectInputStream.readObject();
@@ -59,45 +71,85 @@ public class PropertiesManager {
         return null;
     }
 
-    // Métodos para obtener los valores de cada campo
+    /**
+     * Obtiene el nombre de usuario de las propiedades.
+     *
+     * @return el nombre de usuario
+     */
     public static String getUserNombreUsuario() {
         return properties.getProperty("user.nombre_usuario");
     }
 
+    /**
+     * Obtiene la contraseña de usuario de las propiedades.
+     *
+     * @return la contraseña de usuario
+     */
     public static String getUserContraseña() {
         return properties.getProperty("user.contrasena");
     }
 
+    /**
+     * Verifica si se debe recordar al usuario.
+     *
+     * @return true si se debe recordar al usuario, false en caso contrario
+     */
     public static boolean isRecordarUsuario() {
         return Boolean.parseBoolean(properties.getProperty("recordarUsuario", "false"));
     }
 
+    /**
+     * Verifica si se debe mostrar información adicional.
+     *
+     * @return true si se debe mostrar información adicional, false en caso contrario
+     */
     public static boolean isInfo() {
         return Boolean.parseBoolean(properties.getProperty("info", "false"));
     }
 
-    // Métodos para establecer los valores y guardar en el archivo
+    /**
+     * Establece el nombre de usuario en las propiedades.
+     *
+     * @param nombreUsuario el nombre de usuario a establecer
+     */
     public static void setUserNombreUsuario(String nombreUsuario) {
         properties.setProperty("user.nombre_usuario", nombreUsuario);
         saveProperties();
     }
 
+    /**
+     * Establece la contraseña de usuario en las propiedades.
+     *
+     * @param contraseña la contraseña de usuario a establecer
+     */
     public static void setUserContraseña(String contraseña) {
         properties.setProperty("user.contrasena", contraseña);
         saveProperties();
     }
 
+    /**
+     * Establece si se debe recordar al usuario.
+     *
+     * @param recordarUsuario true si se debe recordar al usuario, false en caso contrario
+     */
     public static void setRecordarUsuario(boolean recordarUsuario) {
         properties.setProperty("recordarUsuario", Boolean.toString(recordarUsuario));
         saveProperties();
     }
 
+    /**
+     * Establece si se debe mostrar información adicional.
+     *
+     * @param info true si se debe mostrar información adicional, false en caso contrario
+     */
     public static void setInfo(boolean info) {
         properties.setProperty("info", Boolean.toString(info));
         saveProperties();
     }
 
-    // Guardar los cambios en el archivo
+    /**
+     * Guarda los cambios en el archivo de propiedades.
+     */
     private static void saveProperties() {
         try (FileOutputStream output = new FileOutputStream(PROPERTIES_FILE)) {
             properties.store(output, "Propiedades de la aplicación");
@@ -106,13 +158,22 @@ public class PropertiesManager {
         }
     }
 
+    /**
+     * Establece si se debe guardar una copia.
+     *
+     * @param saveCopy true si se debe guardar una copia, false en caso contrario
+     */
     public static void setSaveCopy(boolean saveCopy) {
         properties.setProperty("savecopy", Boolean.toString(saveCopy));
         saveProperties();
     }
 
-    public static Boolean getSaveCopy(){
+    /**
+     * Verifica si se debe guardar una copia.
+     *
+     * @return true si se debe guardar una copia, false en caso contrario
+     */
+    public static Boolean getSaveCopy() {
         return Boolean.parseBoolean(properties.getProperty("savecopy", "false"));
     }
 }
-

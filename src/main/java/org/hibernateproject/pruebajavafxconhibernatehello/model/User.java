@@ -8,6 +8,9 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Clase que representa un usuario en el sistema.
+ */
 @Data
 @Entity
 @Table(name = "User", schema = "bdFXHibernate")

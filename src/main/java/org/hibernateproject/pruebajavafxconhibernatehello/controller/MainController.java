@@ -22,6 +22,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
+/**
+ * Controlador principal de la aplicación TottiFlix.
+ * Gestiona la interfaz de usuario y las interacciones con la base de datos de películas.
+ */
 public class MainController implements Initializable {
     @FXML
     private MenuItem menuLogout;
@@ -78,6 +82,12 @@ public class MainController implements Initializable {
     @FXML
     private BorderPane alertInfo;
 
+    /**
+     * Inicializa el controlador.
+     *
+     * @param url la URL utilizada para resolver rutas relativas para el objeto raíz, o null si no se conoce.
+     * @param resourceBundle el paquete de recursos utilizado para localizar el objeto raíz, o null si no se encuentra.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if(new SQLiteServices(SQLiteUtil.getConnection()).helpByUser(user.getId())){
@@ -134,6 +144,9 @@ public class MainController implements Initializable {
 
     }
 
+    /**
+     * Refresca la tabla de películas.
+     */
     private void tableRefresh(){
         table.getItems().clear();
         new MovieDAO(HibernateUtil.getSessionFactory()).findAll().forEach(movie -> {
@@ -141,6 +154,11 @@ public class MainController implements Initializable {
         });
     }
 
+    /**
+     * Maneja la acción de cerrar sesión.
+     *
+     * @param actionEvent el evento de acción.
+     */
     @FXML
     public void logout(ActionEvent actionEvent) {
         PropertiesManager.saveObject("currentcopia",null);
@@ -148,17 +166,34 @@ public class MainController implements Initializable {
         new SQLiteServices(SQLiteUtil.getConnection()).updateRemindMe(user.getId(), false);
         GestorPeliculas.loadFXML("views/login-view.fxml","TottiFilms - Login");
     }
+
+    /**
+     * Maneja la acción de añadir una película.
+     *
+     * @param actionEvent el evento de acción.
+     */
     @FXML
     public void addFilm(ActionEvent actionEvent) {
         PropertiesManager.saveObject("currentcopia",null);
         PropertiesManager.saveObject("currentmovie",null);
         GestorPeliculas.loadFXML("views/addMovie-view.fxml","TottiFilms - Añadir Películas");
     }
+
+    /**
+     * Maneja la acción de cambiar a la vista de copias.
+     *
+     * @param actionEvent el evento de acción.
+     */
     @FXML
     public void switchCopy(ActionEvent actionEvent) {
         GestorPeliculas.loadFXML("views/copy-view.fxml","TottiFilms - Lista de Copias");
     }
 
+    /**
+     * Maneja la acción de aceptar la información.
+     *
+     * @param actionEvent el evento de acción.
+     */
     @FXML
     public void btnAceptar(ActionEvent actionEvent) {
         new SQLiteServices(SQLiteUtil.getConnection()).updateHelp(user.getId(), checkInfo.isSelected());

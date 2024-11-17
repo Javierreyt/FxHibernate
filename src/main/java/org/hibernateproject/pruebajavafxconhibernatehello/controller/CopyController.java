@@ -21,7 +21,11 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-
+/**
+ * Controlador para la gestión de copias de películas.
+ * Permite visualizar, actualizar y eliminar copias de películas.
+ * También permite añadir nuevas copias y gestionar la sesión del usuario.
+ */
 public class CopyController implements Initializable {
     @FXML
     private TableView<MovieCopiaDTO> table;
@@ -90,6 +94,9 @@ public class CopyController implements Initializable {
 
     }
 
+    /**
+     * Refresca la tabla con la lista de copias del usuario actual.
+     */
     private void tableRefresh(){
         table.getItems().clear();
         // Obtener la lista de copias del usuario actual
@@ -102,6 +109,10 @@ public class CopyController implements Initializable {
         });
     }
 
+    /**
+     * Cierra la sesión del usuario y vuelve a la vista de inicio de sesión.
+     * @param actionEvent Evento de acción.
+     */
     @FXML
     public void logout(ActionEvent actionEvent) {
         PropertiesManager.saveObject("currentmovie",null);
@@ -110,6 +121,10 @@ public class CopyController implements Initializable {
         GestorPeliculas.loadFXML("views/login-view.fxml","TottiFilms - Login");
     }
 
+    /**
+     * Añade una nueva película.
+     * @param actionEvent Evento de acción.
+     */
     @FXML
     public void addFilm(ActionEvent actionEvent) {
         PropertiesManager.saveObject("currentmovie",null);
@@ -118,6 +133,10 @@ public class CopyController implements Initializable {
         GestorPeliculas.loadFXML("views/main-view.fxml", "TottiFilms - Lista de Peliculas");
     }
 
+    /**
+     * Muestra la lista de películas.
+     * @param actionEvent Evento de acción.
+     */
     @FXML
     public void listaPeliculasAction(ActionEvent actionEvent) {
         PropertiesManager.saveObject("currentmovie",null);
@@ -125,6 +144,10 @@ public class CopyController implements Initializable {
         GestorPeliculas.loadFXML("views/main-view.fxml", "TottiFilms - Lista de Peliculas");
     }
 
+    /**
+     * Acepta la información del tutorial y actualiza la preferencia del usuario.
+     * @param actionEvent Evento de acción.
+     */
     @FXML
     public void btnAceptar(ActionEvent actionEvent) {
         new SQLiteServices(SQLiteUtil.getConnection()).updateHelp(user.getId(), checkInfo.isSelected());

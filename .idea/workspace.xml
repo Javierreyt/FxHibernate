@@ -5,7 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c1fcaef-924a-4e3f-8bc2-718d8f08704c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/localDb.db" beforeDir="false" afterPath="$PROJECT_DIR$/localDb.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/GestorPeliculas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/GestorPeliculas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/controller/AddMovieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/controller/AddMovieController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/controller/CopyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/controller/CopyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/controller/CopyDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/controller/CopyDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/controller/MovieDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/controller/MovieDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/controller/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/dao/CopiaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/dao/CopiaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/dao/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/dao/DAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/dao/MovieDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/dao/MovieDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/dao/SQLiteServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/dao/SQLiteServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/dto/MovieCopiaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/dto/MovieCopiaDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/model/Copia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/model/Copia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/model/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/model/Movie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/utils/HibernateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/utils/HibernateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/utils/PropertiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/utils/PropertiesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/utils/session.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/utils/session.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,9 +36,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Javierreyt"
+  }
 }]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Javierreyt/FxHibernate.git",
+    "accountId": "08a195ae-d359-4aab-bb9c-6c9e5f4270c8"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2oyVoUEM0ROENlIOf1sYpy6w5zG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -26,22 +59,27 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Hibernate.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "/Users/javierreyt/Desktop/RetoFXHibernate/src/main/java/org/hibernateproject/pruebajavafxconhibernatehello/Main.java",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
-    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+    <configuration name="Hibernate" type="Application" factoryName="Application">
       <envs>
         <env name="MYSQL_ROOT_PASSWORD" value="root" />
         <env name="MYSQL_USER" value="root" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="org.hibernateproject.pruebajavafxconhibernatehello.GestorPeliculas" />
-      <module name="RetoFXHibernate" />
+      <module name="PruebaJavaFXconHibernateHello" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -64,6 +102,7 @@
       <option name="presentableId" value="Default" />
       <updated>1731841978008</updated>
       <workItem from="1731841979302" duration="2000" />
+      <workItem from="1731842664643" duration="1478000" />
     </task>
     <servers />
   </component>

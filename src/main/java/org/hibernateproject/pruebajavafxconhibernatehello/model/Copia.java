@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
+/**
+ * Representa una copia de una película.
+ */
 @Data
 @NoArgsConstructor
 @Entity
@@ -30,6 +33,14 @@ public class Copia implements Serializable {
     @Column(name = "soporte", nullable = false, length = 50)
     private String soporte;
 
+    /**
+     * Constructor que inicializa una copia con los detalles proporcionados.
+     *
+     * @param movie la película asociada a la copia
+     * @param user el usuario propietario de la copia
+     * @param estado el estado de la copia
+     * @param soporte el soporte de la copia
+     */
     public Copia(Movie movie, User user, String estado, String soporte) {
         this.movie = movie;
         this.user = user;

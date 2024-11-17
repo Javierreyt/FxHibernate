@@ -21,6 +21,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * Controlador para la vista de detalles de películas.
+ * Implementa la interfaz Initializable para inicializar los componentes de la vista.
+ */
 public class MovieDetailsController implements Initializable {
     @FXML
     private Button buttonBack;
@@ -57,11 +61,21 @@ public class MovieDetailsController implements Initializable {
     @FXML
     private BorderPane alertInfo;
 
+    /**
+     * Cierra la vista actual y carga la vista principal.
+     *
+     * @param actionEvent el evento de acción
+     */
     @FXML
     public void close(ActionEvent actionEvent) {
         GestorPeliculas.loadFXML("views/main-view.fxml","Gestor de Películas - Copias");
     }
 
+    /**
+     * Muestra la siguiente película en la lista.
+     *
+     * @param actionEvent el evento de acción
+     */
     @FXML
     public void nextMovie(ActionEvent actionEvent) {
         List<Movie> movieList = new MovieDAO(HibernateUtil.getSessionFactory())
@@ -91,6 +105,11 @@ public class MovieDetailsController implements Initializable {
         }
     }
 
+    /**
+     * Muestra la película anterior en la lista.
+     *
+     * @param actionEvent el evento de acción
+     */
     @FXML
     public void backMovie(ActionEvent actionEvent) {
         List<Movie> movieList = new MovieDAO(HibernateUtil.getSessionFactory())
@@ -120,6 +139,12 @@ public class MovieDetailsController implements Initializable {
         }
     }
 
+    /**
+     * Inicializa los componentes de la vista con los datos de la película actual.
+     *
+     * @param url la URL de la vista
+     * @param resourceBundle el conjunto de recursos
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         titleArea.setText(movie.getTitulo());
@@ -132,6 +157,11 @@ public class MovieDetailsController implements Initializable {
         engine.load(movie.getUrl());
     }
 
+    /**
+     * Cierra la sesión del usuario y carga la vista de inicio de sesión.
+     *
+     * @param actionEvent el evento de acción
+     */
     @FXML
     public void logout(ActionEvent actionEvent) {
         PropertiesManager.saveObject("currentmovie",null);
@@ -139,16 +169,31 @@ public class MovieDetailsController implements Initializable {
         GestorPeliculas.loadFXML("views/login-view.fxml","TottiFilms - Login");
     }
 
+    /**
+     * Cambia a la vista de lista de copias.
+     *
+     * @param actionEvent el evento de acción
+     */
     @FXML
     public void switchCopy(ActionEvent actionEvent) {
         GestorPeliculas.loadFXML("views/copy-view.fxml","TottiFilms - Lista de Copias");
     }
 
+    /**
+     * Cambia a la vista principal de películas.
+     *
+     * @param actionEvent el evento de acción
+     */
     @FXML
     public void switchFilms(ActionEvent actionEvent) {
         GestorPeliculas.loadFXML("views/main-view.fxml","Usuario: " + user.getNombreUsuario());
     }
 
+    /**
+     * Elimina la película actual y muestra una alerta de confirmación.
+     *
+     * @param actionEvent el evento de acción
+     */
     @FXML
     public void delete(ActionEvent actionEvent) {
         movieDAO.delete(movie);

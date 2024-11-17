@@ -12,7 +12,9 @@ import org.hibernateproject.pruebajavafxconhibernatehello.utils.HibernateUtil;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
+/**
+ * Controlador para la vista de registro de usuarios.
+ */
 public class RegisterController implements Initializable {
     @FXML
     private Button exitButton;
@@ -39,6 +41,12 @@ public class RegisterController implements Initializable {
     @FXML
     private Button btnAcceptInfo;
 
+    /**
+     * Inicializa los componentes de la vista.
+     *
+     * @param url la URL de la vista
+     * @param resourceBundle el conjunto de recursos
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Enlazamos el texto de ambos campos
@@ -52,6 +60,11 @@ public class RegisterController implements Initializable {
         txtVisiblePassword2.setManaged(false);
     }
 
+    /**
+     * Maneja el evento de registro de usuario.
+     *
+     * @param actionEvent el evento de acción
+     */
     @FXML
     public void enterApp(ActionEvent actionEvent) {
         if(!new UserDAO(HibernateUtil.getSessionFactory()).userExists(txtUser.getText())){
@@ -82,6 +95,11 @@ public class RegisterController implements Initializable {
         }
     }
 
+    /**
+     * Muestra u oculta el campo de contraseña visible para la segunda contraseña.
+     *
+     * @param actionEvent el evento de acción
+     */
     @FXML
     public void setPassword2Visible(ActionEvent actionEvent) {
         if (txtPassword2.isVisible()) {
@@ -97,11 +115,21 @@ public class RegisterController implements Initializable {
         }
     }
 
+    /**
+     * Cierra la aplicación y carga la vista de inicio de sesión.
+     *
+     * @param actionEvent el evento de acción
+     */
     @FXML
     public void closeApp(ActionEvent actionEvent) {
         GestorPeliculas.loadFXML("views/login-view.fxml", "TottiFlix - Login");
     }
 
+    /**
+     * Muestra u oculta el campo de contraseña visible para la primera contraseña.
+     *
+     * @param actionEvent el evento de acción
+     */
     @FXML
     public void setPasswordVisible(ActionEvent actionEvent) {
         if (txtPassword.isVisible()) {

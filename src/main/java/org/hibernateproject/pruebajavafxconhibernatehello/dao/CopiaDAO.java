@@ -11,28 +11,46 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Clase DAO para gestionar las operaciones CRUD de la entidad Copia.
+ */
 public class CopiaDAO implements DAO<Copia>{
 
     private SessionFactory sessionFactory;
 
+    /**
+     * Constructor que inicializa el DAO con una SessionFactory.
+     *
+     * @param sessionFactory la fábrica de sesiones de Hibernate
+     */
     public CopiaDAO(SessionFactory sessionFactory) {
-        this.sessionFactory=sessionFactory;
+        this.sessionFactory = sessionFactory;
     }
 
+    /**
+     * Obtiene todas las copias de la base de datos.
+     *
+     * @return una lista de todas las copias
+     */
     @Override
     public List<Copia> findAll() {
-
-        try(Session session = sessionFactory.openSession()){
-            return session.createQuery("from Copia", Copia.class ).list();
+        try (Session session = sessionFactory.openSession()) {
+            return session.createQuery("from Copia", Copia.class).list();
         } catch (Exception e) {
             e.printStackTrace();
             return new ArrayList<Copia>(0);
         }
     }
 
+    /**
+     * Busca una copia por su ID.
+     *
+     * @param id el ID de la copia
+     * @return la copia encontrada o null si no se encuentra
+     */
     @Override
     public Copia findById(Long id) {
-        try(Session session = sessionFactory.openSession()){
+        try (Session session = sessionFactory.openSession()) {
             return session.get(Copia.class, id);
         } catch (Exception e) {
             e.printStackTrace();
@@ -40,44 +58,55 @@ public class CopiaDAO implements DAO<Copia>{
         }
     }
 
+    /**
+     * Guarda una nueva copia en la base de datos.
+     *
+     * @param copia la copia a guardar
+     */
     @Override
-    public void save(Copia Copia) {
-        sessionFactory.inTransaction(session -> session.persist(Copia));
+    public void save(Copia copia) {
+        sessionFactory.inTransaction(session -> session.persist(copia));
     }
 
+    /**
+     * Actualiza una copia existente en la base de datos.
+     *
+     * @param copia la copia a actualizar
+     */
     @Override
-    public void update(Copia Copia) {
-        sessionFactory.inTransaction(
-                session -> session.merge(Copia)
-                /*  session -> {
-                    session.beginTransaction();
-                    Copia g = session.get(Copia.class, Copia.getId());
-                    g.setTitle(Copia.getTitle());
-                    g.setPlatform(Copia.getPlatform());
-                    g.setYear(Copia.getYear());
-                    g.setDescription(Copia.getDescription());
-                    g.setImageUrl(Copia.getImageUrl());
-                }*/
-        );
+    public void update(Copia copia) {
+        sessionFactory.inTransaction(session -> session.merge(copia));
     }
 
+    /**
+     * Elimina una copia de la base de datos.
+     *
+     * @param copia la copia a eliminar
+     */
     @Override
-    public void delete(Copia Copia) {
-        sessionFactory.inTransaction(session -> session.remove(Copia));
+    public void delete(Copia copia) {
+        sessionFactory.inTransaction(session -> session.remove(copia));
     }
 
-
+    /**
+     * Obtiene un conjunto de soportes distintos de las copias.
+     *
+     * @return un conjunto de soportes distintos
+     */
     public Set<String> findSoporte() {
-        try(Session session = sessionFactory.openSession()){
+        try (Session session = sessionFactory.openSession()) {
             return new HashSet<>(session.createQuery("select distinct soporte from Copia", String.class).getResultList());
         }
     }
 
-
+    /**
+     * Obtiene un conjunto de estados distintos de las copias.
+     *
+     * @return un conjunto de estados distintos
+     */
     public Set<String> findEstado() {
-        try(Session session = sessionFactory.openSession()){
+        try (Session session = sessionFactory.openSession()) {
             return new HashSet<>(session.createQuery("select distinct estado from Copia", String.class).getResultList());
         }
     }
-
 }

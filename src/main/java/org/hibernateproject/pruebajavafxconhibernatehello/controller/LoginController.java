@@ -17,6 +17,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
+/**
+ * Controlador para la vista de inicio de sesión.
+ */
 public class LoginController implements Initializable {
 
     @FXML
@@ -44,9 +47,14 @@ public class LoginController implements Initializable {
     @FXML
     private BorderPane alertInfo;
 
+    /**
+     * Inicializa el controlador de la vista de inicio de sesión.
+     *
+     * @param url la URL utilizada para resolver rutas relativas para el objeto raíz, o null si no se conoce la URL.
+     * @param resourceBundle el recurso utilizado para localizar el objeto raíz, o null si no se ha localizado.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         // Enlazamos el texto de ambos campos
         txtPassword.textProperty().bindBidirectional(txtVisiblePassword.textProperty());
         txtVisiblePassword.setVisible(false);
@@ -56,13 +64,18 @@ public class LoginController implements Initializable {
         });
     }
 
+    /**
+     * Maneja el evento de inicio de sesión.
+     *
+     * @param event el evento de acción que desencadena el inicio de sesión.
+     */
     @FXML
     public void enterApp(ActionEvent event) {
         User user = new UserDAO(HibernateUtil.getSessionFactory()).validateUser(
                 txtUser.getText(),
                 txtPassword.getText()
         );
-        if(user == null){
+        if (user == null) {
             alertInfo.setVisible(true);
             labelTitleAlert.setText("Credenciales incorrectas");
             labelInfoAlert.setText("Usuario o contraseña incorrectos");
@@ -71,11 +84,11 @@ public class LoginController implements Initializable {
             btnAcceptInfo.setOnAction(event1 -> {
                 alertInfo.setVisible(false);
             });
-        }else{
-            if(remind_me.isSelected()){
+        } else {
+            if (remind_me.isSelected()) {
                 PropertiesManager.setUserNombreUsuario(txtUser.getText());
                 PropertiesManager.setUserContraseña(txtPassword.getText());
-            }else{
+            } else {
                 PropertiesManager.setUserNombreUsuario("");
                 PropertiesManager.setUserContraseña("");
             }
@@ -83,28 +96,36 @@ public class LoginController implements Initializable {
             labelTitleAlert.setText("Inicio de sesión correcto");
             labelInfoAlert.setText("Usuario logueado correctamente: Bienvenido " + user.getNombreUsuario());
             PropertiesManager.saveObject("currentuser", user);
-            if(new SQLiteServices(SQLiteUtil.getConnection()).verificarUsuarioPorId(user)) {
+            if (new SQLiteServices(SQLiteUtil.getConnection()).verificarUsuarioPorId(user)) {
                 new SQLiteServices(SQLiteUtil.getConnection()).updateRemindMe(user.getId(), remind_me.isSelected());
-            }else{
+            } else {
                 new SQLiteServices(SQLiteUtil.getConnection()).insertarUsuario(user, remind_me.isSelected(), false);
-
             }
             btnAcceptInfo.setOnAction(event1 -> {
-                if(user.getIsAdmin()){
-                    GestorPeliculas.loadFXML("views/main-view.fxml","Usuario: " + user.getNombreUsuario());
-                }else {
+                if (user.getIsAdmin()) {
+                    GestorPeliculas.loadFXML("views/main-view.fxml", "Usuario: " + user.getNombreUsuario());
+                } else {
                     GestorPeliculas.loadFXML("views/copy-view.fxml", "TottiFilms - Lista de Copias");
                 }
             });
         }
     }
 
-
+    /**
+     * Cierra la aplicación.
+     *
+     * @param actionEvent el evento de acción que desencadena el cierre de la aplicación.
+     */
     @FXML
     public void closeApp(ActionEvent actionEvent) {
         System.exit(0);
     }
 
+    /**
+     * Alterna la visibilidad de la contraseña.
+     *
+     * @param actionEvent el evento de acción que desencadena el cambio de visibilidad de la contraseña.
+     */
     @FXML
     public void setPasswordVisible(ActionEvent actionEvent) {
         if (txtPassword.isVisible()) {

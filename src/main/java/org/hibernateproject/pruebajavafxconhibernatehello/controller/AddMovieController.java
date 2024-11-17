@@ -23,7 +23,9 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.Objects;
 import java.util.ResourceBundle;
-
+/**
+ * Controlador para agregar una película.
+ */
 public class AddMovieController implements Initializable {
     @FXML
     private Button buttonSave;
@@ -60,12 +62,21 @@ public class AddMovieController implements Initializable {
     @FXML
     private BorderPane alertInfo;
 
-
+    /**
+     * Cierra la ventana actual y carga la vista principal.
+     *
+     * @param actionEvent Evento de acción.
+     */
     @FXML
     public void close(ActionEvent actionEvent) {
         GestorPeliculas.loadFXML("views/main-view.fxml","Usuario: " + user.getNombreUsuario());
     }
 
+    /**
+     * Guarda o actualiza la información de la película.
+     *
+     * @param actionEvent Evento de acción.
+     */
     @FXML
     public void saveOrUpdate(ActionEvent actionEvent) {
         if (titleText.getText().isEmpty() ||
@@ -125,6 +136,11 @@ public class AddMovieController implements Initializable {
         }
     }
 
+    /**
+     * Selecciona una imagen de carátula para la película.
+     *
+     * @param actionEvent Evento de acción.
+     */
     @FXML
     public void selectImg(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
@@ -163,6 +179,12 @@ public class AddMovieController implements Initializable {
         }
     }
 
+    /**
+     * Inicializa el controlador.
+     *
+     * @param url URL de la ubicación.
+     * @param resourceBundle Conjunto de recursos.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         yearSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1900, 2024, 2021));
@@ -170,6 +192,11 @@ public class AddMovieController implements Initializable {
         imgJPG.setImage(new Image("file:src/main/resources/org/hibernateproject/pruebajavafxconhibernatehello/media/informacion.png"));
     }
 
+    /**
+     * Cierra la sesión del usuario.
+     *
+     * @param actionEvent Evento de acción.
+     */
     @FXML
     public void logout(ActionEvent actionEvent) {
         PropertiesManager.saveObject("currentmovie",null);
@@ -177,16 +204,32 @@ public class AddMovieController implements Initializable {
         GestorPeliculas.loadFXML("views/login-view.fxml","TottiFilms - Login");
     }
 
+    /**
+     * Cambia a la vista de copias.
+     *
+     * @param actionEvent Evento de acción.
+     */
     @FXML
     public void switchCopy(ActionEvent actionEvent) {
         GestorPeliculas.loadFXML("views/copy-view.fxml","TottiFilms - Lista de Copias");
     }
 
+    /**
+     * Cambia a la vista principal de películas.
+     *
+     * @param actionEvent Evento de acción.
+     */
     @FXML
     public void switchFilms(ActionEvent actionEvent) {
         GestorPeliculas.loadFXML("views/main-view.fxml","Usuario: " + user.getNombreUsuario());
     }
 
+    /**
+     * Formatea una URL de YouTube.
+     *
+     * @param url URL a formatear.
+     * @return URL formateada.
+     */
     private String formatYouTubeURL(String url) {
         // Comprobar si la URL comienza con "https://"
         if (!url.startsWith("https://")) {

@@ -10,6 +10,9 @@ import org.hibernateproject.pruebajavafxconhibernatehello.model.User;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * DTO para representar una película y su copia.
+ */
 @Data
 public class MovieCopiaDTO {
     private Movie movie;
@@ -17,15 +20,32 @@ public class MovieCopiaDTO {
 
     private SessionFactory sessionFactory;
 
+    /**
+     * Constructor que inicializa el DTO con una SessionFactory.
+     *
+     * @param sessionFactory la fábrica de sesiones de Hibernate
+     */
     public MovieCopiaDTO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
+    /**
+     * Constructor que inicializa el DTO con una película y una copia.
+     *
+     * @param movie la película
+     * @param copia la copia de la película
+     */
     public MovieCopiaDTO(Movie movie, Copia copia) {
         this.movie = movie;
         this.copia = copia;
     }
 
+    /**
+     * Encuentra todas las películas y sus copias asociadas a un usuario.
+     *
+     * @param user el usuario
+     * @return una lista de MovieCopiaDTO
+     */
     public List<MovieCopiaDTO> findAllMovieCopiaDTO(User user) {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery(
